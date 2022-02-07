@@ -4,7 +4,7 @@ const port = 8888
 const app = express()
 
 app.get('/', (req:Request, res:Response) => {
-    res.send('Hello World! <br> <a href="/api/users">Create a new user</a>')
+    res.send('Node TypeScript DDD example <br><br> <a href="/api/users">Create a new user</a>')
 })
 
 app.get('/api/users', async (req:Request, res:Response) => {
