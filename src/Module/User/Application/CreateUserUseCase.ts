@@ -1,12 +1,13 @@
 import {UserRepositoryInterface} from "../Domain/Respository/UserRepositoryInterface";
 import {User} from "../Domain/Entity/User";
+import {UserDTO} from "./Type/UserDTO";
 
 export class CreateUserUseCase {
     constructor(
         private userRepository: UserRepositoryInterface
     ) {}
 
-    createUser = async (email: string): Promise<User> => {
+    createUser = async (email: string): Promise<UserDTO> => {
         const existedUser = await this.userRepository.findUserByEmail(email)
 
         if (existedUser) {
@@ -21,6 +22,8 @@ export class CreateUserUseCase {
 
         await this.userRepository.saveEntity(newUser)
 
-        return newUser
+        return {
+            email: newUser.getEmail()
+        }
     }
 }

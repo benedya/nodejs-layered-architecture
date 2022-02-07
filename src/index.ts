@@ -14,7 +14,7 @@ app.get('/api/users', async (req:Request, res:Response) => {
 
     const user = await crateUserUseCase.createUser(email)
 
-    res.send(`User with email "${user.getEmail()}" was created.`)
+    res.send(`User with email "${user.email}" was created.`)
 })
 
 app.listen(port, () => {
