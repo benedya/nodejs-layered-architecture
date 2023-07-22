@@ -9,5 +9,3 @@ RUN npm i -g npm-check-updates
 WORKDIR /home/node/src
 
 USER node
-
-CMD npm install && npm run dev

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Layered Architecture Boilerplate using NodeJS and TypeScript</title>
+    <meta name="google-site-verification" content="aKtuo5Mb5A07_qjM1SNYTV6vDBmB3oHwtUxqawFWcBA" />
+</head>
+<body>
+<h1 id="-layered-architecture-boilerplate-using-nodejs-and-typescript-https-github-com-benedya-nodejs-layered-architecture-"><a href="https://github.com/benedya/nodejs-layered-architecture">Layered Architecture Boilerplate using NodeJS and TypeScript</a></h1>
+<p><a href="https://github.com/benedya/nodejs-layered-architecture/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a></p>
+<p>Welcome to the <strong>Layered (Clean) Architecture Example</strong> built with NodeJS and TypeScript. This open-source project provides a comprehensive boilerplate showcasing a well-structured and maintainable architecture for your NodeJS applications.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#architecture-overview">Architecture Overview</a></li>
+    <li><a href="#dependency-rules">Dependency Rules</a></li>
+    <li><a href="#controlling-dependencies">Controlling Dependencies</a></li>
+    <li><a href="#dependency-injection">Dependency Injection</a></li>
+    <li><a href="#examples">Examples</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>The primary objective of this project is to demonstrate how to create a scalable and modular application structure using the powerful concept of the <strong>Clean Architecture</strong>. The architecture encourages separation of concerns and provides a clear distinction between different layers of your application.</p>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>The application follows the <strong>Clean Architecture</strong>, which consists of three main layers:</p>
+<ol>
+    <li><p><strong>Domain Layer</strong>: This layer holds the core business logic of your application following the principles of Domain-Driven Design (DDD). It is independent of any other layer and contains entities, value objects, aggregates, and domain services.</p>
+    </li>
+    <li><p><strong>Application Layer</strong>: The application layer houses the various features and use cases that your module offers. It depends on the Domain layer to execute business logic and operations.</p>
+    </li>
+    <li><p><strong>Infrastructure Layer</strong>: The infrastructure layer contains implementations of interfaces defined in the inner layers. It deals with the technical aspects of your application, such as database access, external APIs, and other third-party integrations. This layer depends on both the Application and Domain layers.</p>
+    </li>
+</ol>
+<p><img src="Layers.png" alt="Architecture Diagram"></p>
+<h2 id="dependency-rules">Dependency Rules</h2>
+<p>To maintain a clean and well-structured architecture, we adhere to the following dependency rules:</p>
+<ul>
+    <li><p><strong>Domain Layer</strong>: The core domain logic should not depend on any other layer, keeping it decoupled and reusable.</p>
+    </li>
+    <li><p><strong>Application Layer</strong>: The application layer can depend on the Domain layer to access and utilize domain logic to fulfill use cases.</p>
+    </li>
+    <li><p><strong>Infrastructure Layer</strong>: The infrastructure layer can depend on both the Application and Domain layers, allowing it to implement the interfaces defined in the inner layers.</p>
+    </li>
+</ul>
+<h2 id="controlling-dependencies">Controlling Dependencies</h2>
+<p>In order to enforce the defined dependency rules, we utilize the <code>eslint-plugin-boundaries</code> plugin. The rules are clearly described in the <code>.eslintrc.js</code> file, ensuring that our architecture stays consistent and clean.</p>
+<h2 id="dependency-injection">Dependency Injection</h2>
+<p>We leverage <strong>InversifyJS</strong> to configure and manage dependencies across the application. InversifyJS provides a powerful inversion of control container, making it easy to handle the injection of dependencies and manage the application&#39;s lifecycle effectively.</p>
+<h2 id="examples">Examples</h2>
+<p>A module&#39;s use cases (from the Application layer) can be used in commands, controllers, etc.</p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { container } <span class="hljs-keyword">from</span> <span class="hljs-string">'./inversify.config'</span>;
+<span class="hljs-keyword">import</span> { CreateUserUseCase } <span class="hljs-keyword">from</span> <span class="hljs-string">'./Module/User/Application/CreateUserUseCase'</span>;
+
+<span class="hljs-keyword">const</span> email = <span class="hljs-string">'user@test.com'</span>;
+<span class="hljs-keyword">const</span> crateUserUseCase = container.get(CreateUserUseCase);
+
+<span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> crateUserUseCase.createUser(email);
+</code></pre>
+<p>Feel free to explore the different layers and modules of the application to understand how the architecture comes together.</p>
+<h2 id="contributing">Contributing</h2>
+<p>We welcome contributions to improve and expand this project. If you have any ideas, bug fixes, or enhancements, please feel free to open an issue or submit a pull request. Let&#39;s collaborate to create an even better example of the Clean Architecture!</p>
+<h2 id="license">License</h2>
+<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
+<hr>
+<p>We hope this example helps you build robust and scalable applications using the power of Clean Architecture. Happy coding! If you have any questions or need assistance, please don&#39;t hesitate to reach out.</p>
+</body>
+</html>
