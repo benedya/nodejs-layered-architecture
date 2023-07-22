@@ -1,3 +1,3 @@
 export interface UserDTO {
-    email: string
+  email: string;
 }

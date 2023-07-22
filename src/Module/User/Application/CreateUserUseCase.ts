@@ -1,36 +1,36 @@
-import {UserRepositoryInterface} from "../Domain/Respository/UserRepositoryInterface";
-import {User} from "../Domain/Entity/User";
-import {UserDTO} from "./Type/UserDTO";
-import {inject, injectable} from "inversify";
-import {TYPES} from "../../../types";
+import { UserRepositoryInterface } from '../Domain/Respository/UserRepositoryInterface';
+import { User } from '../Domain/Entity/User';
+import { UserDTO } from './Type/UserDTO';
+import { inject, injectable } from 'inversify';
+import { TYPES } from '../../../types';
 
 @injectable()
 export class CreateUserUseCase {
-    private userRepository: UserRepositoryInterface
+  private userRepository: UserRepositoryInterface;
 
-    constructor(
-        @inject(TYPES.UserRepository) userRepository: UserRepositoryInterface
-    ) {
-        this.userRepository = userRepository;
+  constructor(
+    @inject(TYPES.UserRepository) userRepository: UserRepositoryInterface,
+  ) {
+    this.userRepository = userRepository;
+  }
+
+  createUser = async (email: string): Promise<UserDTO> => {
+    const existedUser = await this.userRepository.findUserByEmail(email);
+
+    if (existedUser) {
+      // todo replace by application level exception
+      throw new Error(`User with ${email} already exists.`);
     }
 
-    createUser = async (email: string): Promise<UserDTO> => {
-        const existedUser = await this.userRepository.findUserByEmail(email)
+    // todo use uuid generator?
+    const useId = 1;
 
-        if (existedUser) {
-            // todo replace by application level exception
-            throw new Error(`User with ${email} already exists.`)
-        }
+    const newUser = new User(useId, email);
 
-        // todo use uuid generator?
-        const useId = 1;
+    await this.userRepository.saveEntity(newUser);
 
-        const newUser = new User(useId, email)
-
-        await this.userRepository.saveEntity(newUser)
-
-        return {
-            email: newUser.getEmail()
-        }
-    }
+    return {
+      email: newUser.getEmail(),
+    };
+  };
 }
