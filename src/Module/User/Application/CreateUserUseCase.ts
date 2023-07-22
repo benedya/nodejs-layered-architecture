@@ -1,11 +1,18 @@
 import {UserRepositoryInterface} from "../Domain/Respository/UserRepositoryInterface";
 import {User} from "../Domain/Entity/User";
 import {UserDTO} from "./Type/UserDTO";
+import {inject, injectable} from "inversify";
+import {TYPES} from "../../../types";
 
+@injectable()
 export class CreateUserUseCase {
+    private userRepository: UserRepositoryInterface
+
     constructor(
-        private userRepository: UserRepositoryInterface
-    ) {}
+        @inject(TYPES.UserRepository) userRepository: UserRepositoryInterface
+    ) {
+        this.userRepository = userRepository;
+    }
 
     createUser = async (email: string): Promise<UserDTO> => {
         const existedUser = await this.userRepository.findUserByEmail(email)

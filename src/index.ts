@@ -1,5 +1,6 @@
 import express, {Request, Response} from 'express'
-import {provideCrateUserUseCase} from "./Module/User";
+import {container} from "./inversify.config";
+import {CreateUserUseCase} from "./Module/User/Application/CreateUserUseCase";
 const port = 8888
 const app = express()
 
@@ -10,7 +11,8 @@ app.get('/', (req:Request, res:Response) => {
 app.get('/api/users', async (req:Request, res:Response) => {
     // todo get it from payload
     const email = 'user@test.com';
-    const crateUserUseCase = provideCrateUserUseCase()
+    const crateUserUseCase = container.get(CreateUserUseCase)
+
 
     const user = await crateUserUseCase.createUser(email)
 

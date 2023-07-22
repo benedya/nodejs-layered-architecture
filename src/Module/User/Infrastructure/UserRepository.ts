@@ -1,7 +1,8 @@
 import {UserRepositoryInterface} from "../Domain/Respository/UserRepositoryInterface";
 import {User} from "../Domain/Entity/User";
+import {injectable} from "inversify";
 
-// todo implement typeorm
+@injectable()
 export class UserRepository implements UserRepositoryInterface {
     public async findUserByEmail(email: string): Promise<User | null> {
         return Promise.resolve(null)
