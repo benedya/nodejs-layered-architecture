@@ -1,3 +1,9 @@
+
+> ⚠️ More elaborated version you can find here [https://github.com/benedya/nestjs-layered-architecture](https://github.com/benedya/nestjs-layered-architecture)  
+
+&nbsp;
+&nbsp;
+
 # [Layered Architecture Boilerplate using NodeJS and TypeScript](https://github.com/benedya/nodejs-layered-architecture)
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/benedya/nodejs-layered-architecture/blob/master/LICENSE)
