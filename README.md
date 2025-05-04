@@ -15,10 +15,10 @@ Welcome to the **Layered (Clean) Architecture Example** built with NodeJS and Ty
 - [License](#license)
 
 ## Introduction
-The primary objective of this project is to demonstrate how to create a scalable and modular application structure using the powerful concept of the **Clean Architecture**. The architecture encourages separation of concerns and provides a clear distinction between different layers of your application.
+The primary objective of this project is to demonstrate how to create a scalable and modular application structure using the powerful concept of the **Layered Architecture**. The architecture encourages separation of concerns and provides a clear distinction between different layers of your application.
 
 ## Architecture Overview
-The application follows the **Clean Architecture**, which consists of three main layers:
+The application follows the **Layered Architecture**, which consists of three main layers:
 
 1. **Domain Layer**: This layer holds the core business logic of your application following the principles of Domain-Driven Design (DDD). It is independent of any other layer and contains entities, value objects, aggregates, and domain services.
 
@@ -29,7 +29,7 @@ The application follows the **Clean Architecture**, which consists of three main
 ![Architecture Diagram](Layers.png)
 
 ## Dependency Rules
-To maintain a clean and well-structured architecture, we adhere to the following dependency rules:
+To maintain a clean and well-structured architecture, the following dependency rules are adhered to:
 
 - **Domain Layer**: The core domain logic should not depend on any other layer, keeping it decoupled and reusable.
 
@@ -38,10 +38,10 @@ To maintain a clean and well-structured architecture, we adhere to the following
 - **Infrastructure Layer**: The infrastructure layer can depend on both the Application and Domain layers, allowing it to implement the interfaces defined in the inner layers.
 
 ## Controlling Dependencies
-In order to enforce the defined dependency rules, we utilize the `eslint-plugin-boundaries` plugin. The rules are clearly described in the `.eslintrc.js` file, ensuring that our architecture stays consistent and clean.
+In order to enforce the defined dependency rules, the `eslint-plugin-boundaries` plugin is utilized. The rules are clearly described in the `.eslintrc.js` file, ensuring that the architecture stays consistent and clean.
 
 ## Dependency Injection
-We leverage **InversifyJS** to configure and manage dependencies across the application. InversifyJS provides a powerful inversion of control container, making it easy to handle the injection of dependencies and manage the application's lifecycle effectively.
+**InversifyJS** is leveraged to configure and manage dependencies across the application. InversifyJS provides a powerful inversion of control container, making it easy to handle the injection of dependencies and manage the application's lifecycle effectively.
 
 ## Examples
 A module's use cases (from the Application layer) can be used in commands, controllers, etc.
@@ -60,11 +60,12 @@ const user = await crateUserUseCase.createUser(email);
 Feel free to explore the different layers and modules of the application to understand how the architecture comes together.
 
 ## Contributing
-We welcome contributions to improve and expand this project. If you have any ideas, bug fixes, or enhancements, please feel free to open an issue or submit a pull request. Let's collaborate to create an even better example of the Clean Architecture!
+Contributions to improve and expand this project are welcome. If there are any ideas, bug fixes, or enhancements, feel free to open an issue or submit a pull request. Collaboration is encouraged to create an even better example of the Layered Architecture!
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-We hope this example helps you build robust and scalable applications using the power of Clean Architecture. Happy coding! If you have any questions or need assistance, please don't hesitate to reach out.
+It is hoped that this example helps in building robust and scalable applications using the power of Layered Architecture. Happy coding! If there are any questions or assistance is needed, please don't hesitate to reach out.
+
